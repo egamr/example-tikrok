@@ -1,0 +1,27 @@
+#filterRow {
+    font-size:48px;
+    bottom:110px; 
+    position: absolute;
+    justify-content: space-between;
+    width: 500px;
+    margin-left: 50px;
+    display:none;
+    z-index: 50;
+}
+
+.loading {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+#filterBtn {
+    font-size:48px;
+    bottom:30px; 
+    right: 190px; 
+    position: absolute;
+    /*to get above canvas*/
+    z-index: 50;
+}

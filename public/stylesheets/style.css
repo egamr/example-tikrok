@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/roboto-regular.ttf');
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  justify-content: center;
+  align-items: center;
+}
+
+img:hover {
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+
+a:hover {
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,99 @@
+<% include partials/header %>
+
+<!--The Jeeliz Helpers -->
+<script src="facefilter/jeelizFaceFilter.js"></script>
+<script src="facefilter/three.min.js"></script>
+<script src="facefilter/JeelizResizer.js"></script>
+<script src="facefilter/JeelizThreejsHelper.js"></script>
+<script src='facefilter/addDragEventListener.js'></script>
+<script src="facefilter/JeelizFaceCut.js"></script>
+<!--END The Jeeliz Helpers -->
+
+<script src='facefilter/filters/<%=filter%>/<%=filter%>.js'></script>
+<script src="express-recorder.js"></script>
+
+<link rel="stylesheet" href="stylesheets/record.css">
+
+<style type="text/css">
+.vidsize {
+    width:600px;
+    height:600px;
+}
+</style>
+</head>
+
+<body onload="init_filter()">
+    <% include partials/menu %>
+    <div class="vidsize" style="margin:0 auto;position: relative;">
+        <div id="loading" class="loading">
+            Loading Filter 
+            <br>
+            <img class="loading" src="/images/loading_black.png">
+        </div>
+        <div id="filterRow">
+            <a href="#" onclick="loadFilter('football')">🇫🇷</a>
+            <a href="#" onclick="loadFilter('angel')">😇😈</a>
+            <a href="#" onclick="loadFilter('deform')">🥴</a>
+            <a href="#" onclick="loadFilter('faceswap')">😀🔄😀</a>
+        </div>
+        <div id="filterBtn"><a href="#" onclick="filterBtnToggle()">😃</a></div>
+        <canvas width="600" height="600" id='jeeFaceFilterCanvas'></canvas>
+        <div id="controls" class="vidsize"></div>
+    </div>
+
+
+    <script type="text/javascript">
+        const expressRec = Kaltura.ExpressRecorder.create('controls', {
+            "ks": "<%=ks%>",
+            "serviceUrl": "https://www.kaltura.com", // IE http://www.kaltura.com,
+            "app": "APP_NAME",
+            "playerUrl": "https://cdnapi.kaltura.com", // IE http://cdnapi.kaltura.com,
+            "conversionProfileId": "CONVERSION_PROFILE_ID",
+            "partnerId": <%=partnerId%>,
+            "uiConfId": <%=playerId%>,
+            "canvasId": "jeeFaceFilterCanvas"
+        });
+
+        expressRec.instance.addEventListener("recordingStarted", (e) => {
+            console.log(e.type);
+            //hide the filter buttons when recording has started
+            $('#filterRow').hide();
+            $('#filterBtn').hide();
+        });
+        
+        expressRec.instance.addEventListener("recordingCancelled", (e) => {
+          	//if use hits cancel button, then show the filters again
+            $('#filterBtn').show();
+            console.log(e.type);   
+        });
+
+        expressRec.instance.addEventListener("mediaUploadEnded",(e) => {
+           //once upload is finished, then move on to gallery
+           window.onbeforeunload = null
+           window.location="/gallery";
+        });
+        
+        expressRec.instance.addEventListener("error", (e) => {
+            console.log(e.type + ", " + e.detail.message)
+        });
+                     
+      </script>
+
+      <script type="text/javascript">
+        
+        function filterBtnToggle() {
+            if($('#filterRow').css('display') == 'none') {
+                $('#filterRow').css('display', 'flex');
+            } else {
+                $('#filterRow').hide();
+            }
+        }
+
+        function loadFilter(filter) {
+            window.onbeforeunload = null;
+            window.location = "/record?filter="+filter
+        }
+      </script>
+
+</body>
+<% include partials/footer %>
