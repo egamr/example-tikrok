@@ -8,7 +8,7 @@
     "url": "git+https://github.com/kaltura/path-composer.git"
   },
   "scripts": {
-    "start": "cross-env DEBUG=kaltura-tikrok:* nodemon ./bin/www",
+    "start": "./bin/www",
     "dev": "cross-env DEBUG=kaltura-tikrok:* nodemon --inspect ./bin/www"
   },
   "dependencies": {
