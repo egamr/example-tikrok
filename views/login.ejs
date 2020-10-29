@@ -5,18 +5,14 @@
     }
 </script>
 </head>
+<% include partials/github-badge %>
 <body style="display: flex;">
+    <form onsubmit="handleSubmit()" method="post">
+        <input name="userId" autofocus id="login-name" style="font-size: 60px;" type="text" class="form-input"
+            placeholder="Screename..." required>
 
-<form onsubmit="handleSubmit()" method="post" >
-        <input name="userId" autofocus id="login-name" 
-        style="font-size: 60px;"
-        type="text" class="form-input" 
-        placeholder="Screename..."  required>
-      
-        <input id="submitBtn" 
-            style="font-size: 36px;"
-        type="submit" value="Go">
+        <input id="submitBtn" style="font-size: 36px;" type="submit" value="Go">
 
-</form>
+    </form>
 
-<% include partials/footer %>
+    <% include partials/footer %>
