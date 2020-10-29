@@ -1,12 +1,14 @@
 ## Creating Your Own Video Social Network in Under 20 Minutes!
 
-In this tutorial, you will build an MVP of a video social network with a face filter powered by Kaltura with a node.js back end and a javascript front end.
+In this tutorial, you will build an MVP of a video social network called Tikrok with a face filter powered by Kaltura with a node.js back end and a javascript front end.
 
 
 
 ![HighLevel](readme_images/HighLevel.png)
 
+## Try it Live:
 
+https://tik-rok.herokuapp.com/
 
 ## Design Choices
 
@@ -28,7 +30,7 @@ This sample, fully functional social network lets you use a funny face filter to
 
 1. First, You will need a free Kaltura account: start a [free trial](https://vpaas.kaltura.com/register)
 
-2. Clone the TikRok Github repo https://github.com/hunterpp/tikrok
+2. Clone the TikRok Github repo https://github.com/kaltura-vpaas/example-tikrok
 
 3. Let's take a look at .env.template:
 
