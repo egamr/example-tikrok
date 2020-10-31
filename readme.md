@@ -2,9 +2,7 @@
 
 In this tutorial, you will build an MVP of a video social network called Tikrok with a face filter powered by Kaltura with a node.js back end and a javascript front end.
 
-
-
-![HighLevel](readme_images/HighLevel.png)
+![HighLevel](/assets/images/tikrok/HighLevel.png)
 
 ## Try it Live:
 
@@ -18,7 +16,7 @@ Many shortcuts were taken in order to give you the barebones, simplest implement
 
 Don’t limit yourself to copying TikRok, the purpose of this tutorial is to ignite your creativity. There are so many directions you **could** go in…..for example, there are open source emotion-recogition engines….why not make an app that detects if someone is sad or angry (show video example of Hunter doing sad face + detection) and notify their friends they need cheering up? Food for thought. Think big, think different, be bold. Do something so amazing they can’t ignore you. And it doesn’t have to be entertaining….think healthcare/covid-19, think education, think business, think food, fashion, music, finance, holidays, think what can I do with face detection, or just something creative with video?
 
-<img src="readme_images/HAPPY.jpg" alt="HAPPY" style="zoom:30%;" />
+<img src="/assets/images/tikrok/HAPPY.jpg" alt="HAPPY" style="zoom:30%;" />
 
 From https://github.com/justadudewhohacks/face-api.js/
 
@@ -42,13 +40,13 @@ This sample, fully functional social network lets you use a funny face filter to
 
    We are going to need to get your codes for each of these so lets head over to [Integration Settings tab](https://kmc.kaltura.com/index.php/kmcng/settings/integrationSettings)
 
-   <img src="readme_images/KMC_CODES.png" alt="KMC_CODES" style="zoom:45%;" />
+   <img src="/assets/images/tikrok/KMC_CODES.png" alt="KMC_CODES" style="zoom:45%;" />
 
 Head over to https://kmc.kaltura.com/index.php/kmcng/studio/v3 , create a player and get its ID. Make sure to create your player through the "TV Platform Studio" as pictured:
 
 
 
-<img src="readme_images/KMC_PLAYER.png" alt="KMC_PLAYER.png" style="zoom:50%;" />
+<img src="/assets/images/tikrok/KMC_PLAYER.png" alt="KMC_PLAYER.png" style="zoom:50%;" />
 
 Edit the values in `.env.template` and copy the file to `.env`
 
@@ -68,7 +66,7 @@ Edit the values in `.env.template` and copy the file to `.env`
 
 Pick a screen name and hit go:
 
-![SCREEN_NAME](readme_images/SCREEN_NAME.png)
+![SCREEN_NAME](/assets/images/tikrok/SCREEN_NAME.png)
 
 The next touch point is the `router.post('/', `method of `routes/login.js`
 
@@ -95,7 +93,7 @@ We use the open source face filter library https://github.com/jeeliz/jeelizFaceF
 
 Here is a high level overview of how we are actually creating a video with a face filter 
 
-![FaceFilter](readme_images/FaceFilter.png)
+![FaceFilter](/assets/images/tikrok/FaceFilter.png)
 
 By itself, the facefilter demo displays to a canvas element. Some of the demo's use `<divs>` to display graphics on top of a canvas, those demos won't work with our approach.
 
@@ -116,7 +114,7 @@ By itself, the facefilter demo displays to a canvas element. Some of the demo's 
         <div id="loading" class="loading">
             Loading Filter 
             <br>
-            <img class="loading" src="/readme_images/loading_black.png">
+            <img class="loading" src="//assets/images/tikrok/loading_black.png">
         </div>
         <div id="filterRow">
             <a href="#" onclick="loadFilter('football')">🇫🇷</a>
@@ -203,7 +201,7 @@ We also make extensive use of the express recorder's event listener interface to
 
 You should see something like this: 
 
-<img src="readme_images/FUNNY.png" alt="FUNNY" style="zoom:50%;" />
+<img src="/assets/images/tikrok/FUNNY.png" alt="FUNNY" style="zoom:50%;" />
 
 Go ahead and try a **Live Demo** which will upload to your [Kaltura Management Console](https://kmc.kaltura.com/index.php/kmcng/content/entries/list)
 
@@ -211,13 +209,13 @@ Go ahead and try a **Live Demo** which will upload to your [Kaltura Management C
 
 We are taking a very mvp approach to displaying the gallery with a simplifying assumption: this app will be the only source of videos connected to your account. If you want more control over how to organize videos, check out [Playlists](https://developer.kaltura.com/api-docs/service/playlist)
 
-The express recorder creates a [Kaltura Media Entry](https://developer.kaltura.com/api-docs/General_Objects/Objects/KalturaMediaEntry) for your video and associates it with your user id. Our approach will simply list all media in our account via the [Media.list](https://developer.kaltura.com/console/service/media/action/list) api call 
+The express recorder creates a [Kaltura Media Entry](https://developer.kaltura.com/api-docs/General_Objects/Objects/KalturaMediaEntry) for your video and associates it with your user id. Our approach will simply list all media in our account via the [Media.list](https://developer.kaltura.com/console/service/media/action/list) API call 
 
-### Kaltura Api Console
+### Kaltura API Console
 
 When you look at [Media.list](https://developer.kaltura.com/console/service/media/action/list) in the console: 
 
-![MEDIALIST](readme_images/MEDIALIST.png)
+![MEDIALIST](/assets/images/tikrok/MEDIALIST.png)
 
 On the left, we can send the request and add parameters to the request. Also pay close attention to the right side where you can choose from all supported languages to autogenerate sample code corresponding to the exact request on the left. 
 
@@ -263,7 +261,7 @@ We are using https://github.com/kaltura/VideoThumbnailAnimator in `views/gallery
 
 To display a users videos, We are using [Media.list](https://developer.kaltura.com/console/service/media/action/list) again with one extra step: filtering by userId.
 
-and you can build this query using the Api Console:
+and you can build this query using the API Console:
 
 ```javascript
 let filter = new kaltura.objects.MediaEntryFilter
@@ -310,9 +308,9 @@ And in `routes/user/post.ejs` we load the player with:
 
 `<a href="#" onclick="player.loadMedia({entryId: '<%= entry.id %>'})"><img src="<%= entry.thumbnailUrl %>"></a>`
 
-## Wrapping Up
+# Wrapping Up
 
-My intention is that you were inspired to see how easy it can be to create a facefilter based application using the Kaltura VPaaS api and its extensive documentation. 
+I hope this tutorial has inspired you to see how easy it can be to create a canvas based application using the Kaltura VPaaS API and its extensive documentation. 
 
 # How you can help (guidelines for contributors)
 
@@ -342,4 +340,3 @@ Copyright © Kaltura Inc. All rights reserved.
 ### Open Source Libraries Used:
 
 https://github.com/jeeliz/jeelizFaceFilter 
-
