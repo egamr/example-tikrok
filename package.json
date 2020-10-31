@@ -1,8 +1,8 @@
 {
   "name": "kaltura-tikrok",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kaltura/path-composer.git"
@@ -20,7 +20,7 @@
     "express": "~4.16.1",
     "express-session": "^1.17.0",
     "http-errors": "~1.6.3",
-    "kaltura-client": "16.5.0",
+    "kaltura-client": "16.10.0",
     "morgan": "~1.9.1",
     "ramda": "^0.26.1"
   },
