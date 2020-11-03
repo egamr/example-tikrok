@@ -5,7 +5,7 @@
   "license": "AGPL-3.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaltura/path-composer.git"
+    "url": "git+https://github.com/kaltura-vpaas/example-tikrok.git"
   },
   "scripts": {
     "start": "./bin/www",
