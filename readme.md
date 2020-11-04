@@ -14,7 +14,7 @@ Many shortcuts were taken in order to give you the barebones, simplest implement
 
 ## This is just a kernel...
 
-Don’t limit yourself to copying TikRok, the purpose of this tutorial is to ignite your creativity. There are so many directions you **could** go in, for example, there are open source emotion-recogition engines. Why not make an app that detects if someone is sad or angry (show video example of Hunter doing sad face + detection) and notify their friends they need cheering up? Food for thought. Think big, think different, be bold. Do something so amazing they can’t ignore you. And it doesn’t have to be entertaining, think healthcare/covid-19, think education, think business, think food, fashion, music, finance, holidays, think what can I do with face detection, an augemented reality canvas or just something creative with video?
+Don’t limit yourself to copying TikRok, the purpose of this tutorial is to ignite your creativity. There are so many directions you **could** go in, for example, there are open source emotion-recogition engines. Why not make an app that detects if someone is sad or angry and notify their friends they need cheering up? Food for thought. And it doesn’t have to be entertaining, think healthcare/covid-19, think education, think business, think food, fashion, music, finance, holidays, think what can I do with face detection, an augmented reality canvas or just something creative with video?
 
 <img src="/assets/images/tikrok/HAPPY.jpg" alt="HAPPY" style="zoom:30%;" />
 
