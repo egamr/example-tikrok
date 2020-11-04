@@ -14,7 +14,7 @@ Many shortcuts were taken in order to give you the barebones, simplest implement
 
 ## This is just a kernel...
 
-Don’t limit yourself to copying TikRok, the purpose of this tutorial is to ignite your creativity. There are so many directions you **could** go in…..for example, there are open source emotion-recogition engines….why not make an app that detects if someone is sad or angry (show video example of Hunter doing sad face + detection) and notify their friends they need cheering up? Food for thought. Think big, think different, be bold. Do something so amazing they can’t ignore you. And it doesn’t have to be entertaining….think healthcare/covid-19, think education, think business, think food, fashion, music, finance, holidays, think what can I do with face detection, or just something creative with video?
+Don’t limit yourself to copying TikRok, the purpose of this tutorial is to ignite your creativity. There are so many directions you **could** go in, for example, there are open source emotion-recogition engines. Why not make an app that detects if someone is sad or angry (show video example of Hunter doing sad face + detection) and notify their friends they need cheering up? Food for thought. Think big, think different, be bold. Do something so amazing they can’t ignore you. And it doesn’t have to be entertaining, think healthcare/covid-19, think education, think business, think food, fashion, music, finance, holidays, think what can I do with face detection, an augemented reality canvas or just something creative with video?
 
 <img src="/assets/images/tikrok/HAPPY.jpg" alt="HAPPY" style="zoom:30%;" />
 
@@ -38,17 +38,21 @@ This sample, fully functional social network lets you use a funny face filter to
    PLAYER_ID=3456789
    ```
 
-   We are going to need to get your codes for each of these so lets head over to [Integration Settings tab](https://kmc.kaltura.com/index.php/kmcng/settings/integrationSettings)
+   Copy  `.env.template` to `.env` and edit the values as shown above.  
 
+   
+   
+   We need to get your Kaltura Partner Id and API Admin Secret so lets head over to [Integration Settings tab](https://kmc.kaltura.com/index.php/kmcng/settings/integrationSettings)
+   
    <img src="/assets/images/tikrok/KMC_CODES.png" alt="KMC_CODES" style="zoom:45%;" />
 
-Head over to https://kmc.kaltura.com/index.php/kmcng/studio/v3 , create a player and get its ID. Make sure to create your player through the "TV Platform Studio" as pictured:
+Head  to https://kmc.kaltura.com/index.php/kmcng/studio/v3 , create a player and get its ID. Make sure to create your player through the "TV Platform Studio" as pictured:
 
 
 
 <img src="/assets/images/tikrok/KMC_PLAYER.png" alt="KMC_PLAYER.png" style="zoom:50%;" />
 
-Edit the values in `.env.template` and copy the file to `.env`
+
 
 4. Install the components for this node:
 
@@ -58,7 +62,7 @@ Edit the values in `.env.template` and copy the file to `.env`
 
    `npm start`
 
-   and head over to 
+   and head to 
 
    `http://localhost:3000`
 
@@ -79,9 +83,7 @@ var userKs = await KalturaClientFactory.getKS(user.id,{privileges: 'editadmintag
 
 Take a look at `lib/KalturaClientFactory.js` to see how the [Kaltura Session](https://developer.kaltura.com/api-docs/VPaaS-API-Getting-Started/how-to-create-kaltura-session.html) is created
 
-We first create an admin session `adminks` which is required to create a user. Then we create a user session `userKs` which is the only session we will use for everything else we do after this.
-
-Then we store the `userKs` to the node session so it can be used later.
+We first create an admin session `adminks` which is required to create a user. Then we create a user session `userKs`  and store the `userKs` to the node session so it can be used later.
 
 `req.session.ks = userKs;`
 
@@ -95,7 +97,7 @@ Here is a high level overview of how we are actually creating a video with a fac
 
 ![FaceFilter](/assets/images/tikrok/FaceFilter.png)
 
-By itself, the facefilter demo displays to a canvas element. Some of the demo's use `<divs>` to display graphics on top of a canvas, those demos won't work with our approach.
+By itself, the facefilter demo displays to a canvas element. Some of the demo's use `<divs>` to display graphics on top of a canvas, those demos won't work with our approach as we can only record what is actually on the canvas
 
 ### Loading and Switching Filters
 
@@ -142,7 +144,7 @@ And the filter is loaded through a query parameter:
 
 `<script src='facefilter/filters/<%=filter%>/<%=filter%>.js'></script>`
 
-Nothing is stopping you from doing away with this technique and switching filters entirely in javascript, just some code refactoring would be necessary. 
+Nothing is stopping you from doing away with this technique and switching filters entirely in javascript, just some refactoring would be necessary. 
 
 And if you are wondering about the loading animated png...it displays by default on page load, and then is hidden by each of the four filters by calling
 
