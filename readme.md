@@ -33,12 +33,12 @@ This sample, fully functional social network lets you use a funny face filter to
 3. Let's take a look at .env.template:
 
    ```json
-   ADMIN_SECRET=abcdefg
-   PARTNER_ID=123456
-   PLAYER_ID=3456789
+   ADMIN_SECRET=   //obtain from https://kmc.kaltura.com/index.php/kmcng/settings/integrationSettings
+   PARTNER_ID=     //obtain from https://kmc.kaltura.com/index.php/kmcng/settings/integrationSettings
+   PLAYER_ID=      //obtain from https://kmc.kaltura.com/index.php/kmcng/studio/v3
    ```
 
-   Copy  `.env.template` to `.env` and edit the values as shown above.  
+   Copy  `.env.template` to `.env` and edit the values above.  
 
    
    
