@@ -1,6 +1,8 @@
 ## Creating Your Own Video Social Network in Under 20 Minutes!
 
-In this tutorial, you will build an MVP of a video social network called Tikrok with a face filter powered by Kaltura with a node.js back end and a javascript front end.
+In this tutorial, you will build an MVP of a social network (aka TikRok) powered by Kaltura. Tikrok is a fully functional social network. Users can record videos using a built-in face filter, upload them, and browse other users’ videos.
+
+
 
 ![HighLevel](/assets/images/tikrok/HighLevel.png)
 
@@ -87,13 +89,13 @@ We first create an admin session `adminks` which is required to create a user. T
 
 `req.session.ks = userKs;`
 
-And then we are redirected to the ***REALLY*** fun stuff!
+And then we are redirected to the ***REALLY*** fun stuff: the facefilter!
 
 ## The Face Filter 
 
-We use the open source face filter library https://github.com/jeeliz/jeelizFaceFilter There is nothing stopping you from getting very creative with these filters! You could supply your own artwork....the sky is the limit!
+We will use the open source face filter library https://github.com/jeeliz/jeelizFaceFilter There is nothing stopping you from getting very creative with these filters! You could supply your own artwork....the sky is the limit!
 
-Here is a high level overview of how we are actually creating a video with a face filter 
+Here is a high level overview of the video creation work flow: 
 
 ![FaceFilter](/assets/images/tikrok/FaceFilter.png)
 
@@ -144,9 +146,9 @@ And the filter is loaded through a query parameter:
 
 `<script src='facefilter/filters/<%=filter%>/<%=filter%>.js'></script>`
 
-Nothing is stopping you from doing away with this technique and switching filters entirely in javascript, just some refactoring would be necessary. 
+Nothing is stopping you from switching filters entirely in javascript, just some refactoring would be necessary. 
 
-And if you are wondering about the loading animated png...it displays by default on page load, and then is hidden by each of the four filters by calling
+In case you are wondering about the `#loading` animated png...it displays by default on page load, and then is hidden by each of the four filters by calling
 
 ```
   $("#loading").hide();
@@ -157,11 +159,11 @@ in `deform.js`
 
 ### Setup Kaltura Express Recorder
 
-In `views/record.ejs` We use the [Kaltura Express Recorder](https://developer.kaltura.com/api-docs/Ingest_and_Upload_Media/express-recorder.html), which has the option to record a canvas element and combine it with your webcam's audio. 
+In `views/record.ejs` we will use the [Kaltura Express Recorder](https://developer.kaltura.com/api-docs/Ingest_and_Upload_Media/express-recorder.html), which has the option to record a canvas element and combine it with your webcam's audio. 
 
-**Note**: Included in the github for tikrok is a special "canvas" version of express recorder named `kaltura-canvas-express-recorder.js`
+**Note**:The github for tikrok includes a forked "canvas" version of express recorder named `kaltura-canvas-express-recorder.js`
 
- And `<div id="controls"` is where the [Kaltura Express Recorder](https://developer.kaltura.com/api-docs/Ingest_and_Upload_Media/express-recorder.html) controls will be injected. All of these elements must have the same video size to render properly. So now to instantiate the express recorder:
+1. `<div id="controls"` is where the [Kaltura Express Recorder](https://developer.kaltura.com/api-docs/Ingest_and_Upload_Media/express-recorder.html) controls will be injected. These elements must all have the same video size to render properly. Now to instantiate the express recorder:
 
 ```javascript
 			 const expressRec = Kaltura.ExpressRecorder.create('controls', {
@@ -176,9 +178,9 @@ In `views/record.ejs` We use the [Kaltura Express Recorder](https://developer.ka
         });
 ```
 
-We have injected all relevant id strings from node,  and we specify the canvas to record via `canvasId` [Kaltura Express Recorder](https://developer.kaltura.com/api-docs/Ingest_and_Upload_Media/express-recorder.html) has many more configuration options and event listeners. 
+We have supplied all relevant id strings from node,  and we specify the canvas to record via `canvasId` [Kaltura Express Recorder](https://developer.kaltura.com/api-docs/Ingest_and_Upload_Media/express-recorder.html) has many more configuration options and event listeners. 
 
-We also make extensive use of the express recorder's event listener interface to help us create a better UX.
+2. We will also use the express recorder's event listener interface to create a better UX:
 
 ``` javascript
  				expressRec.instance.addEventListener("recordingStarted", (e) => {
@@ -203,11 +205,9 @@ We also make extensive use of the express recorder's event listener interface to
 
 
 
-You should see something like this: 
+3. You should see something like this: 
 
 <img src="/assets/images/tikrok/FUNNY.png" alt="FUNNY" style="zoom:50%;" />
-
-Go ahead and try a **Live Demo** which will upload to your [Kaltura Management Console](https://kmc.kaltura.com/index.php/kmcng/content/entries/list)
 
 ## The Gallery :
 
@@ -221,9 +221,9 @@ When you look at [Media.list](https://developer.kaltura.com/console/service/medi
 
 ![MEDIALIST](/assets/images/tikrok/MEDIALIST.png)
 
-On the left, we can send the request and add parameters to the request. Also pay close attention to the right side where you can choose from all supported languages to auto-generate sample code corresponding to the exact request on the left. 
+On the left, we can send the request or add parameters. On the right side you can auto-generate a sample code corresponding to the request on the left from all supported languages.
 
-And you will see...it is very close to what `gallery.js` is using:
+And the autogenerated code is very close to what `gallery.js` is using:
 
 ```javascript
 function getMedia(client) {
@@ -263,9 +263,7 @@ We are using https://github.com/kaltura/VideoThumbnailAnimator in `views/gallery
 
 ### Querying for user's Kaltura Media Entries
 
-To display a users videos, We are using [Media.list](https://developer.kaltura.com/console/service/media/action/list) again with one extra step: filtering by userId.
-
-and you can build this query using the API Console:
+To display a users videos, We will use [Media.list](https://developer.kaltura.com/console/service/media/action/list) but this time we will filter by userId. You can build this query using the API Console:
 
 ```javascript
 let filter = new kaltura.objects.MediaEntryFilter
@@ -308,13 +306,13 @@ src="https://cdnapisec.kaltura.com/p/<%=partnerId %>/embedPlaykitJs/uiconf_id/<%
 
 
 
-And in `routes/user/post.ejs` we load the player with:
+And in `routes/user/post.ejs` we will load the player with:
 
 `<a href="#" onclick="player.loadMedia({entryId: '<%= entry.id %>'})"><img src="<%= entry.thumbnailUrl %>"></a>`
 
-# Wrapping Up
+# AND - That's It!
 
-I hope this tutorial has inspired you to see how easy it can be to create a canvas based application using the Kaltura VPaaS API and its extensive documentation. 
+I hope this tutorial has helped show you how easy it can be to create a canvas-based application in node using the Kaltura VPaaS API
 
 # How you can help (guidelines for contributors)
 
