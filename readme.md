@@ -207,7 +207,7 @@ We have supplied all relevant id strings from node,  and we specify the canvas t
 
 3. You should see something like this: 
 
-<img src="/assets/images/tikrok/FUNNY.png" alt="FUNNY" style="zoom:50%;" />
+<img src="/assets/images/tikrok/FUNNY.PNG" alt="FUNNY" style="zoom:50%;" />
 
 ## The Gallery :
 
