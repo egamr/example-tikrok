@@ -10,13 +10,17 @@ In this tutorial, you will build an MVP of a social network (aka TikRok) powered
 
 https://tik-rok.herokuapp.com/
 
+## Video Code Walkthrough:
+
+http://www.kaltura.com/tiny/qqfsk 
+
 ## Design Choices
 
 Many shortcuts were taken in order to give you the barebones, simplest implementation of this concept aka an MVP. I chose a web front end to give a low barrier to entry across any platform. While recording does not work on all mobile browsers, the face filters do, and a more robust implementation could make use of Kaltura's many [Client Libraries](https://developer.kaltura.com/api-docs/Client_Libraries) 
 
 ## This is just a kernel...
 
-Don’t limit yourself to copying TikRok, the purpose of this tutorial is to ignite your creativity. There are so many directions you **could** go in, for example, there are open source emotion-recogition engines. Why not make an app that detects if someone is sad or angry and notify their friends they need cheering up? Food for thought. And it doesn’t have to be entertaining, think healthcare/covid-19, think education, think business, think food, fashion, music, finance, holidays, think what can I do with face detection, an augmented reality canvas or just something creative with video?
+Don’t limit yourself to copying TikRok, the purpose of this tutorial is to ignite your creativity. There are so many directions you **could** go in, for example, there are open source emotion recognition engines. Why not make an app that detects if someone is sad or angry and notify their friends they need cheering up? Food for thought. And it doesn’t have to be entertaining, think healthcare/covid-19, think education, think business, think food, fashion, music, finance, holidays, think what can I do with face detection, an augmented reality canvas or just something creative with video?
 
 <img src="/assets/images/tikrok/HAPPY.jpg" alt="HAPPY" style="zoom:30%;" />
 
@@ -43,9 +47,9 @@ This sample, fully functional social network lets you use a funny face filter to
    Copy  `.env.template` to `.env` and edit the values above.  
 
    
-   
-   We need to get your Kaltura Partner Id and API Admin Secret so lets head over to [Integration Settings tab](https://kmc.kaltura.com/index.php/kmcng/settings/integrationSettings)
-   
+
+   We need to get your Kaltura Partner Id and API Admin Secret so let's head over to [Integration Settings tab](https://kmc.kaltura.com/index.php/kmcng/settings/integrationSettings)
+
    <img src="/assets/images/tikrok/KMC_CODES.png" alt="KMC_CODES" style="zoom:45%;" />
 
 Head to https://kmc.kaltura.com/index.php/kmcng/studio/v3 , create a player and get its ID. Make sure to create your player through the "TV Platform Studio" as pictured:
@@ -103,7 +107,7 @@ By itself, the face filter demo displays to a canvas element. Some of the demo's
 
 ### Loading and Switching Filters
 
- First, lets set up the filter:
+ First, let's set up the filter:
 
 ```html
 <style type="text/css">

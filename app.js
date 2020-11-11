@@ -25,7 +25,6 @@ app.use(cookieSession({
   secret: process.env['SESSION_SECRET']
 }))
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
