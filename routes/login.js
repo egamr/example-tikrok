@@ -19,7 +19,7 @@ router.post('/', async (req, res, next) => {
 
     res.redirect(`/record`);
   }catch (e) {
-    res.render('login', { errorMessage: e.message});
+    res.render('error', { message: e,error:e});
   }
 });
 
