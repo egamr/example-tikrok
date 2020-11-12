@@ -11,12 +11,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-var loginRouter = require('./routes/login');
-var recordRouter = require('./routes/record.js');
-var userRouter = require('./routes/user');
-var galleryRouter = require('./routes/gallery');
-
 var cookieSession = require('cookie-session');
 
 var app = express();
@@ -24,6 +18,23 @@ app.use(cookieSession({
   name: 'session',
   secret: process.env['SESSION_SECRET']
 }))
+
+/*
+uncomment for https
+const port = 3000;
+const https = require('https');
+var key = fs.readFileSync(__dirname + '/../certs/selfsigned.key');
+var cert = fs.readFileSync(__dirname + '/../certs/selfsigned.crt');
+var options = {
+  key: key,
+  cert: cert
+};
+
+var server = https.createServer(options, app);
+
+server.listen(port, () => {
+  console.log("server starting on port : " + port)
+});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,6 +45,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+var loginRouter = require('./routes/login');
+var recordRouter = require('./routes/record.js');
+var userRouter = require('./routes/user');
+var galleryRouter = require('./routes/gallery');
 
 app.use('/', loginRouter);
 
