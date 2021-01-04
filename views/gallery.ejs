@@ -1,4 +1,10 @@
 <% include partials/header %>
+<script>
+    function handleSubmit() {
+        $('#submitBtn').val('Please wait').prop("disabled", true);
+    }
+</script>
+
 
 <style type="text/css">
     .videothumbnail {
@@ -12,10 +18,17 @@
 <script src="./KalturaThumbAnimator.js"></script>
 </head>
 
-<body>
-    <% include partials/github-badge %>
+<body style="overflow: visible;">
     <% include partials/menu %>
-    <div id="thumbnails">
+        <form style="margin-top: 150px;margin-left: 150px;" onsubmit="handleSubmit()" method="search">
+            <input name="userId" autofocus id="login-name" style="font-size: 35px;" type="text" class="form-input"
+                placeholder="search" required>
+    
+            <input id="submitBtn" style="font-size: 35px;" type="submit" value="search">
+    
+        </form>
+
+    <div id="thumbnails" style="margin: 151px; display: flex; ">
         <%- include('gallery/entries.ejs', {entries: entries}) %>
     </div>
     <script>
@@ -26,7 +39,7 @@
     <script>
         setTimeout(function () {
             location.reload();
-        }, 1E4);
+        }, 150000);
     </script>
 
     <% include partials/footer %>

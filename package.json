@@ -8,8 +8,8 @@
     "url": "git+https://github.com/kaltura-vpaas/example-tikrok.git"
   },
   "scripts": {
-    "start": "./bin/www",
-    "dev": "cross-env DEBUG=kaltura-tikrok:* nodemon --inspect ./bin/www"
+    "start": "node www",
+    "dev": "cross-env DEBUG=kaltura-tikrok:* nodemon --inspect www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -20,6 +20,7 @@
     "express": "~4.16.1",
     "express-session": "^1.17.0",
     "http-errors": "~1.6.3",
+    "jquery.fancytable": "^1.0.19",
     "kaltura-client": "16.10.0",
     "morgan": "~1.9.1",
     "ramda": "^0.26.1"

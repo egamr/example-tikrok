@@ -1,3 +1,30 @@
-<% entries.forEach(function(entry){ %>
-    <%- include('entry', {entry: entry}) %>
+<script>
+    function handleDelete(mediaId) {
+       alert("Item with ID:  " + mediaId + "  Deleted");
+    }
+</script>
+<script src="../../routes/gallery.js"></script>
+<script src="../../views/pagination.ejs"></script>
+
+
+<table style= "border: 1px solid black;" class="pagination" data-pagecount="3">
+    <tr>
+       <th>#</th><th>thumbnail</th><th>Name</th><th>Duration</th><th>entry id</th><th>Action</th>
+    </tr>
+  <tbody >
+      <!-- i is the max number of entries  -->
+      <% var i = 0; %>
+<% entries.forEach(function(entry){
+    i++;
+    if (i >= 20) return; %>
+    <tr>
+        <td style = "text-align: center"><%= i %></td>
+        <td style = "text-align: center"><%- include('entry', {entry: entry}) %></td>
+        <td style = "text-align: center"><%= entry.name %></td>
+        <td style = "text-align: center"><%= entry.duration %></td>
+        <td style = "text-align: center"><%= entry.id %></td>
+        <td style = "text-align: center"> <button id="myBtn" name="myname" style="background-color: red;" value= <%= entry.id %> onclick="handleDelete(this.value)">Delete</button> </td>
+    </tr>
 <% }); %>
+</tbody>
+</table>

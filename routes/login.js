@@ -17,7 +17,7 @@ router.post('/', async (req, res, next) => {
     var userKs = await KalturaClientFactory.getKS(user.id,{privileges: 'editadmintags:*'});
     req.session.ks = userKs;
 
-    res.redirect(`/record`);
+    res.redirect(`/gallery`);
   }catch (e) {
     res.render('error', { message: e,error:e});
   }

@@ -84,8 +84,8 @@ function foot_init_threeScene(spec){
     maskBufferGeometry.computeVertexNormals();
     const threeMask = new THREE.Mesh(maskBufferGeometry, build_maskMaterial());
     threeMask.frustumCulled=false;
-    threeMask.scale.multiplyScalar(1.2);
-    threeMask.position.set(0,0.2,-0.5);
+    threeMask.scale.multiplyScalar(0);
+    threeMask.position.set(0,0,0);
     threeStuffs.faceObject.add(threeMask);
   });
 

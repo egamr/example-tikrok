@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require('../example-tikrok/app');
 var debug = require('debug')('kaltura-tikrok:server');
 var http = require('http');
 

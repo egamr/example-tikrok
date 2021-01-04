@@ -28,5 +28,22 @@ router.get("/", async (req, res, next) => {
     const { PARTNER_ID: partnerId } = process.env;
     res.render("gallery", { entries,partnerId });
 });
+router.post('/', async (req, res, next) => {
+    try {
+      var adminks = await KalturaClientFactory.getKS('', {type: kaltura.enums.SessionType.ADMIN});
+      var client = await KalturaClientFactory.getClient(adminks);
+      var user = await getOrCreateUser(client, req.body.userId);
+      var userKs = await KalturaClientFactory.getKS(user.id,{privileges: 'editadmintags:*'});
+
+      let id = req.body.mediaId;
+      kaltura.services.playlist.deleteAction(id)
+      .execute(client)
+      .then(result => {
+          console.log(result);
+      });
+    }catch (e) {
+      res.render('error', { message: e,error:e});
+    }
+  });
 
 module.exports = router;
